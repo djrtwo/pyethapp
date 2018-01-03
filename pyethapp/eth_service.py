@@ -163,14 +163,14 @@ class ChainService(WiredService):
 
         super(ChainService, self).__init__(app)
         log.info('initializing chain')
-        coinbase = app.services.accounts.coinbase
+        self.coinbase = app.services.accounts.coinbase
         env = Env(self.db, sce['block'])
 
         genesis_data = sce.get('genesis_data', {})
         if not genesis_data:
             genesis_data = mk_genesis_data(env)
         self.chain = Chain(
-            env=env, genesis=genesis_data, coinbase=coinbase,
+            env=env, genesis=genesis_data, coinbase=self.coinbase,
             new_head_cb=self._on_new_head)
         header = self.chain.state.prev_headers[0]
         log.info('chain at', number=header.number)
@@ -244,7 +244,7 @@ class ChainService(WiredService):
             # make_head_candidate modifies it.
             txqueue = copy.deepcopy(self.transaction_queue)
             self._head_candidate, self._head_candidate_state = make_head_candidate(
-                self.chain, txqueue, timestamp=int(time.time()))
+                self.chain, txqueue, timestamp=int(time.time()), coinbase=self.coinbase)
         return self._head_candidate
 
     def add_transaction(self, tx, origin=None, force_broadcast=False, force=False):
