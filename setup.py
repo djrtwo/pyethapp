@@ -34,7 +34,7 @@ LONG_DESCRIPTION = README + '\n\n' + HISTORY
 install_requires = set(x.strip() for x in open('requirements.txt'))
 install_requires_replacements = {
     'https://github.com/ethereum/serpent/tarball/develop': 'ethereum-serpent',
-    'https://github.com/ethereum/pydevp2p/tarball/develop': 'devp2p',
+    'https://github.com/djrtwo/pydevp2p/tarball/develop': 'devp2p',
     'https://github.com/ethereum/pyethereum/tarball/develop': 'ethereum'
 }
 install_requires = [install_requires_replacements.get(r, r) for r in install_requires]
@@ -42,7 +42,7 @@ install_requires = [install_requires_replacements.get(r, r) for r in install_req
 # dependency links
 dependency_links = [
     'https://github.com/ethereum/serpent/tarball/develop#egg=ethereum-serpent-9.99.9',
-    'http://github.com/ethereum/pydevp2p/tarball/develop#egg=devp2p-9.99.9',
+    'http://github.com/djrtwo/pydevp2p/tarball/develop#egg=devp2p-9.99.9',
     'http://github.com/ethereum/pyethereum/tarball/develop#egg=ethereum-9.99.9',
 ]
 

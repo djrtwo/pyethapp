@@ -20,5 +20,5 @@ tinyrpc[gevent,httpclient,jsonext,websocket,wsgi]
 pycryptodome==3.4.6
 future
 https://github.com/ethereum/serpent/tarball/develop
-https://github.com/ethereum/pydevp2p/tarball/develop
+https://github.com/djrtwo/pydevp2p/tarball/develop
 https://github.com/ethereum/pyethereum/tarball/develop
